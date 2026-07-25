@@ -79,7 +79,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+      <header className="brand-surface sticky top-0 z-40">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <a href="#top" className="font-heading text-sm font-semibold tracking-tight">
             Maya Okonkwo
@@ -89,42 +89,63 @@ export default function Home() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm brand-on-muted transition-colors hover:text-[color:var(--brand-on)]"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <Button asChild size="sm" variant="secondary">
+          <Button
+            asChild
+            size="sm"
+            className="bg-[color:var(--brand-on)] text-[color:var(--brand-indigo)] hover:bg-[color:var(--brand-on-muted)]"
+          >
             <a href="#contact">Get in touch</a>
           </Button>
         </div>
       </header>
 
-      <main id="top" className="mx-auto max-w-5xl px-6">
-        {/* Hero */}
-        <section className="grid gap-8 py-24 md:py-32">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Designer & Frontend Engineer
+      {/* Hero — branded indigo/violet surface */}
+      <section id="top" className="brand-surface">
+        <div className="mx-auto grid max-w-5xl gap-8 px-6 py-28 md:py-36">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] brand-on-muted">
+            Designer &amp; Frontend Engineer
           </p>
-          <h1 className="max-w-3xl text-balance font-heading text-5xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-7xl">
+          <h1 className="max-w-3xl text-balance font-heading text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">
             I build interfaces where craft and clarity meet.
           </h1>
-          <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            I&apos;m Maya — a product designer and engineer based in Lisbon, shipping thoughtful
-            digital products for teams that care about the details.
-          </p>
+          <div className="max-w-xl space-y-1 text-lg leading-relaxed brand-on-muted">
+            <p className="text-pretty">
+              Product designer and engineer based in Lisbon, shipping thoughtful digital products
+              for teams that care about the details.
+            </p>
+            <p className="pt-1 font-bold uppercase tracking-wide text-[color:var(--brand-on)]">
+              Relentlessly
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <Button asChild size="lg">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[color:var(--brand-on)] text-[color:var(--brand-indigo)] hover:bg-[color:var(--brand-on-muted)]"
+            >
               <a href="#work">
                 View selected work <ArrowUpRight className="ml-1 size-4" />
               </a>
             </Button>
-            <Button asChild size="lg" variant="ghost">
+            <Button
+              asChild
+              size="lg"
+              variant="ghost"
+              className="text-[color:var(--brand-on)] hover:bg-[color-mix(in_oklch,var(--brand-on),transparent_88%)] hover:text-[color:var(--brand-on)]"
+            >
               <a href="#about">About me</a>
             </Button>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-5xl px-6">
 
         {/* Work */}
         <section id="work" className="scroll-mt-20 border-t border-border/60 py-20">

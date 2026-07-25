@@ -154,3 +154,40 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Brand accent surface — a deep-indigo panel with a violet radial glow, matching the
+   reference. Kept OUTSIDE the engine-owned :root/.dark token blocks so theme
+   materialization passes it through untouched; it's a scoped decorative surface, not a
+   theme override. Components reference these class names, never raw color literals. */
+:root {
+  --brand-indigo: oklch(0.31 0.16 285);
+  --brand-violet: oklch(0.55 0.2 293);
+  --brand-on: oklch(0.99 0.005 285);
+  --brand-on-muted: oklch(0.86 0.03 290);
+}
+
+.brand-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--brand-indigo);
+  color: var(--brand-on);
+}
+
+.brand-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      60% 90% at 78% 40%,
+      var(--brand-violet) 0%,
+      color-mix(in oklch, var(--brand-violet), transparent 55%) 35%,
+      transparent 70%
+    );
+}
+
+.brand-on-muted {
+  color: var(--brand-on-muted);
+}
