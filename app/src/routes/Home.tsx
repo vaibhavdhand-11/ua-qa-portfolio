@@ -1,6 +1,8 @@
 import { useData } from '@/lib/data'
 import { ArrowUpRight, Mail, AtSign, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useAboutMe } from '@/data/aboutMe'
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
@@ -75,6 +77,7 @@ const SOCIALS = [
 export default function Home() {
   const { data: projects } = useData<Project[]>('projects', 'seed', PROJECTS_SEED)
   const items = projects ?? []
+  const { aboutText, isLoading: isAboutLoading } = useAboutMe()
 
   return (
     <div className="brand-surface min-h-screen">
@@ -195,12 +198,18 @@ export default function Home() {
         >
           <div className="grid gap-5">
             <h2 className="font-heading text-2xl font-semibold tracking-tight">About</h2>
-            <p className="max-w-prose text-pretty text-lg leading-relaxed brand-on-muted">
-              Over the last eight years I&apos;ve worked across startups and studios, designing and
-              building products end to end. I care most about the space between design and
-              engineering — where a good idea either becomes something people love to use, or
-              quietly falls apart.
-            </p>
+            {isAboutLoading ? (
+              <div className="grid gap-2">
+                <Skeleton className="h-6 w-full" />
+                <Skeleton className="h-6 w-11/12" />
+                <Skeleton className="h-6 w-4/5" />
+              </div>
+            ) : (
+              <p className="max-w-prose text-pretty text-lg leading-relaxed brand-on-muted">
+                {aboutText ||
+                  `Over the last eight years I've worked across startups and studios, designing and building products end to end. I care most about the space between design and engineering — where a good idea either becomes something people love to use, or quietly falls apart.`}
+              </p>
+            )}
             <p className="max-w-prose text-pretty leading-relaxed brand-on-muted">
               When I&apos;m not shipping, I write about interface craft, mentor junior designers, and
               spend too much time tuning typography.
