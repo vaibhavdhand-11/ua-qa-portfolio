@@ -105,7 +105,7 @@ export default function Home() {
         {/* Hero */}
         <section className="grid gap-8 py-24 md:py-32">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Designer & Frontend Engineer
+            Product Manager
           </p>
           <h1 className="max-w-3xl text-balance font-heading text-5xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-7xl">
             I build interfaces where craft and clarity meet.
